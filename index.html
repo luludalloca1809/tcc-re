@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vídeo Interativo</title>
   <style>
     body {
@@ -10,12 +10,12 @@
       text-align: center;
       padding: 50px;
       margin: 0;
-      background-color: #f0f0f0;
+      background-color: #E3E4FA;
     }
 
     #avancar {
-      background-color: #E3E4FA;
-      color: light blue;
+      background-color: #007bff;
+      color: white;
       padding: 15px 30px;
       border: none;
       font-size: 18px;
@@ -48,26 +48,35 @@
   <button id="avancar">Avançar</button>
 
   <div id="videoContainer">
-    <video id="meuVideo" controls autoplay>
-      <source src="meuvideo.mp4.mp4" type="video/mp4">
+    <video id="meuVideo" controls>
+      <source src="meuvideo.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
     </video>
   </div>
 
   <script>
-    document.getElementById("avancar").onclick = function() {
-      document.getElementById("videoContainer").style.display = "block";
+    document.getElementById("avancar").onclick = function () {
+      const videoContainer = document.getElementById("videoContainer");
+      const video = document.getElementById("meuVideo");
+
+   
+      videoContainer.style.display = "block";
       this.style.display = "none";
 
-      
-      const video = document.getElementById("meuVideo");
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) { // Safari
-        video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) { // IE
-        video.msRequestFullscreen();
-      }
-    }
+   
+      video.play().then(() => {
+        
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+      }).catch((error) => {
+        console.warn("Falha ao iniciar o vídeo automaticamente:", error);
+      });
+    };
   </script>
 
 </body>
