@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeo Interativo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #avancar {
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .seta {
+      font-size: 40px;
+      margin: 10px 0;
+      color: gray;
+    }
+
+    #videoContainer {
+      display: none;
+    }
+
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Clique aqui</h2>
+  <div class="seta">↓</div>
+  <button id="avancar">Avançar</button>
+
+  <div id="videoContainer">
+    <video id="meuVideo" controls autoplay>
+      <source src="meuvideo.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
+  </div>
+
+  <script>
+    document.getElementById("avancar").onclick = function() {
+      document.getElementById("videoContainer").style.display = "block";
+      this.style.display = "none";
+
+      
+      const video = document.getElementById("meuVideo");
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) { // Safari
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) { // IE
+        video.msRequestFullscreen();
+      }
+    }
+  </script>
+
+</body>
+</html>
