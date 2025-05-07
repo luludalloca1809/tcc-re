@@ -6,7 +6,7 @@
   <title>Vídeo Interativo</title>
   <style>
     body {
-      font-family: Times New Roman;
+      font-family: Arial, sans-serif;
       text-align: center;
       padding: 50px;
       margin: 0;
@@ -15,7 +15,7 @@
 
     #avancar {
       background-color: #87CEFA;
-      color: white;
+      color: light blue;
       padding: 15px 30px;
       border: none;
       font-size: 18px;
@@ -59,13 +59,13 @@
       const videoContainer = document.getElementById("videoContainer");
       const video = document.getElementById("meuVideo");
 
-   
+      // Mostrar o vídeo
       videoContainer.style.display = "block";
       this.style.display = "none";
 
-   
+      // Iniciar o vídeo
       video.play().then(() => {
-        
+        // Entrar em tela cheia após o vídeo começar
         if (video.requestFullscreen) {
           video.requestFullscreen();
         } else if (video.webkitRequestFullscreen) {
